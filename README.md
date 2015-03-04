@@ -16,7 +16,7 @@ To set the PowerShell Execution Policy to its original configuration, open Power
 Set-ExecutionPolicy Restricted
 ```
 
-Move the directories to your user PowerShell profile (C:\Users\user\Documents\WindowsPowerShell\Modules).
+Move the directories to your user PowerShell profile ($HOME\Documents\WindowsPowerShell\Modules).
 
 To use the modules run the commands below.
 
