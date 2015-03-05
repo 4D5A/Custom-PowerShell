@@ -2,7 +2,7 @@
 
 For the PowerShell modules to run you need to install a minimum of PowerShell version 2.
 
-To download a module, save the module directory to $HOME (%userprofile%) \Documents\WindowsPowerShell\Modules. This directory is part of the $PATH for PowerShell. After verifying your version of PowerShell and before you attempt to run these PowerShell modules, check that your PowerShell Script Execution Policy is properly set.
+To download a module, save the module directory to $HOME (%userprofile%) \Documents\WindowsPowerShell\Modules. This directory is part of the $PSModulePath. After verifying your version of PowerShell and before you attempt to run these PowerShell modules, check that your PowerShell Script Execution Policy is properly set.
 
 To allow the execution of PowerShell scripts, open PowerShell as Administrator and run the below command.
 
