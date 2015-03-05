@@ -21,7 +21,7 @@ Move the directories to your user PowerShell profile ($HOME\Documents\WindowsPow
 To import a module run the command below.
 
 ```
-Import-Module *modulename*
+Import-Module modulename
 ```
 
 So if you are importing a module named Get-Example the command would be -
@@ -33,7 +33,7 @@ Import-Module Get-Example
 To remove a module run the command below.
 
 ```
-Remove-Module *modulename*
+Remove-Module modulename
 ```
 
 So if you are removing a module named Get-Example the command would be -
@@ -46,7 +46,7 @@ Remove-Module Get-Example
 To display the help for a module run the command below.
 
 ```
-Get-Help *modulename* -full
+Get-Help modulename -full
 ```
 
 So if you want to display the help information for a module named Get-Example the command would be -
