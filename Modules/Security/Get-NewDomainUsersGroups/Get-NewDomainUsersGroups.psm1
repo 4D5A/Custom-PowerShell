@@ -9,15 +9,15 @@
 
         .Example
             # Enumerate all domain users that were created in the last 30 days
-            Get-NewDomainUsers -age 30 -type user
+            Get-NewDomainUsersGroups -age 30 -type user
         
         .Example
             # Enumerate all domain groups that were created in the last 30 days
-            Get-NewDomainUsers -age 30 -type group
+            Get-NewDomainUsersGroups -age 30 -type group
         
         .Example
             # Enumerate all domain administrators that were created in the last 30 days.
-            Get-NewDomainUsers -age 30 -type user -accessslevel admin
+            Get-NewDomainUsersGroups -age 30 -type user -accessslevel admin
     #>
 
     param(
@@ -34,12 +34,15 @@ Import-Module ActiveDirectory
 
     $When = ((Get-Date).AddDays(-$age)).Date
     $DomainAdminsDn = (Get-ADGroup 'Domain Admins').DistinguishedName
+    $EnterpriseAdminsDn = (Get-ADGroup 'Enterprise Admins').DistinguishedName
+    $DomainUsersDn = (Get-ADGroup 'Domain Users').DistinguishedName
     If (($type -ne $null) -AND ($accesslevel -ne $null)) {
         If (($type -like 'user*') -AND ($accesslevel -like 'admin*')) {
             Get-ADUser -Filter { ((memberof -eq $DomainAdminsDn) -and (whenCreated -ge $When))}
+            Get-ADUser -Filter { ((memberof -eq $EnterpriseAdminsDn) -and (whenCreated -ge $When))}
         }
         If (($type -like 'user*') -AND ($accesslevel -like 'user*')) {
-            Get-ADUser -Filter { ((-not (memberof -eq $DomainAdminsDn)) -and (whenCreated -ge $When))}
+            Get-ADUser -Filter { ((-not (memberof -eq $DomainUsersDn)) -and (whenCreated -ge $When))}
         }
     }
     If ($accesslevel -eq $null) {
